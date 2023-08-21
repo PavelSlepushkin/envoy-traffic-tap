@@ -1,0 +1,8 @@
+# start envoy
+./envoy -c server.yaml
+
+# enable tapping
+curl --data-binary "@tap.yaml" localhost:9000/tap
+
+# execute post
+curl -v -H "foo: bar" -H "content-type: application/json"  -H "user: sal" -d '{"foo":"bar"}'  http://localhost:8080/post
